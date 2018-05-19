@@ -4567,8 +4567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b879c7b0dabeb747b19d5ac33653bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookSpeed: 150
+  head: {fileID: 1731286107}
   speed: 6
-  lookSpeed: 60
 --- !u!43 &1203845631
 Mesh:
   m_ObjectHideFlags: 0
@@ -6570,7 +6571,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 90
   orthographic: 0

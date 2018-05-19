@@ -7,13 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     CharacterController controller;
 
-    [SerializeField] float speed;
+    float mouseX, mouseY;
     [SerializeField] float lookSpeed;
+    [SerializeField] Transform head;
 
     float movH, movV;
-    float mouseX, mouseY;
+    [SerializeField] float speed;
 
-	void Start ()
+    void Start ()
     {
         controller = GetComponent<CharacterController>();
 	}
@@ -26,8 +27,13 @@ public class PlayerController : MonoBehaviour
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
 
+        // Movement
         if (movV > 0.1f || -0.1f > movV || movH > 0.1f || -0.1f > movH) controller.SimpleMove(transform.forward * speed * movV + transform.right * speed * movH);
 
+        // Turning
         if (mouseX > 0.1f || -0.1f > mouseX) transform.eulerAngles += new Vector3(0, mouseX * lookSpeed * Time.deltaTime, 0);
+
+        //Looking up/down
+        if (mouseY > 0.1f || -0.1f > mouseY) head.eulerAngles += new Vector3(-mouseY * lookSpeed * Time.deltaTime, 0, 0);
     }
 }

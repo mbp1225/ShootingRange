@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     float movH, movV;
     [SerializeField] float speed;
 
+    [SerializeField] GunController gun;
+
     void Start ()
     {
         controller = GetComponent<CharacterController>();
@@ -35,5 +37,8 @@ public class PlayerController : MonoBehaviour
 
         //Looking up/down
         if (mouseY > 0.1f || -0.1f > mouseY) head.eulerAngles += new Vector3(-mouseY * lookSpeed * Time.deltaTime, 0, 0);
+
+        //Shooting
+        if (Input.GetMouseButtonDown(0)) gun.Shoot();
     }
 }
